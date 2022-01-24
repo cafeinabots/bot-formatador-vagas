@@ -107,7 +107,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
         }
       }
 
-      const remoteTerms = ["remoto", "remota"];
+      const remoteTerms = ["remoto", "remota", "remotar"];
       for (let i = 0; i < remoteTerms.length; i++) {
         const regexRemote = new RegExp(remoteTerms[i], "gi");
         if (body.search(regexRemote) !== -1) {
