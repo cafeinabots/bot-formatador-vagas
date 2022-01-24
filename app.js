@@ -70,9 +70,9 @@ bot.on(["text", "forward", "photo"], (msg) => {
         }
       }
 
-      const mobileTerms = ["mobile", " iOS", "Android"];
+      const mobileTerms = ["mobile", "iOS", "Android"];
       for (let i = 0; i < mobileTerms.length; i++) {
-        const regexMobile = new RegExp(mobileTerms[i], "gi");
+        const regexMobile = new RegExp(mobileTerms[i], "g");
         if (body.search(regexMobile) !== -1) {
           jobOpportunity.push("#mobile");
           console.log(pretty(body));
