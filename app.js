@@ -3,8 +3,25 @@ import axios from "axios";
 import cheerio from "cheerio";
 import pretty from "pretty";
 import { jobOpportunityTerms } from "./jobOpportunityTerms.js";
+import { jobLevelTerms } from "./jobLevelTerms.js";
 
 const bot = new Telebot(process.env.BOT_TOKEN);
+
+function searchTerms(terms, arrayToAdd) {
+  const optionsArray = Object.keys(terms);
+  for (let i = 0; i < opportunityArray.length; i++) {
+    for (let j = 0; j < terms[optionsArray[i]].terms.length; j++) {
+      const termRegex = new RegExp(
+        terms[optionsArray[i]].terms[j],
+        terms[optionsArray[i]].regexOpt
+      );
+      if (body.search(termRegex) !== -1) {
+        arrayToAdd.push(terms[optionsArray[i]].hashtag);
+        break;
+      }
+    }
+  }
+}
 
 const CHAT_ID = -1001608160303;
 const URL_REGEX =
@@ -44,68 +61,8 @@ bot.on(["text", "forward", "photo"], (msg) => {
       jobTitle = $("title").text();
       const body = $("body").text();
 
-      const opportunityArray = Object.keys(jobOpportunityTerms);
-      for (let i = 0; i < opportunityArray.length; i++) {
-        for (
-          let j = 0;
-          j < jobOpportunityTerms[opportunityArray[i]].terms.length;
-          j++
-        ) {
-          const regexOpportunity = new RegExp(
-            jobOpportunityTerms[opportunityArray[i]].terms[j],
-            jobOpportunityTerms[opportunityArray[i]].regexOpt
-          );
-          if (body.search(regexOpportunity) !== -1) {
-            jobOpportunity.push(jobOpportunityTerms[opportunityArray[i]].hashtag);
-            break;
-          }
-        }
-      }
-
-      const internTerms = ["estagio", "estágio", "intern "];
-      for (let i = 0; i < internTerms.length; i++) {
-        const regexIntern = new RegExp(internTerms[i], "gi");
-        if (body.search(regexIntern) !== -1) {
-          jobLevel.push("#estagio");
-          break;
-        }
-      }
-
-      const traineeTerms = ["trainee"];
-      for (let i = 0; i < traineeTerms.length; i++) {
-        const regexTrainee = new RegExp(traineeTerms[i], "gi");
-        if (body.search(regexTrainee) !== -1) {
-          jobLevel.push("#trainee");
-          break;
-        }
-      }
-
-      const juniorTerms = ["junior", "júnior"];
-      for (let i = 0; i < juniorTerms.length; i++) {
-        const regexJunior = new RegExp(juniorTerms[i], "gi");
-        if (body.search(regexJunior) !== -1) {
-          jobLevel.push("#junior");
-          break;
-        }
-      }
-
-      const remoteTerms = ["remoto", "remota", "remotar"];
-      for (let i = 0; i < remoteTerms.length; i++) {
-        const regexRemote = new RegExp(remoteTerms[i], "gi");
-        if (body.search(regexRemote) !== -1) {
-          jobLocal.push("#remoto");
-          break;
-        }
-      }
-
-      const SPTerms = ["SP", "São Paulo", "Sao Paulo"];
-      for (let i = 0; i < SPTerms.length; i++) {
-        const regexSP = new RegExp(SPTerms[i], "gi");
-        if (body.search(regexSP) !== -1) {
-          jobLocal.push("#SP");
-          break;
-        }
-      }
+      searchTerms(jobOpportunityTerms, jobOpportunity);
+      searchTerms(jobLevelTerms, jobLevel);
 
       if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
         limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
