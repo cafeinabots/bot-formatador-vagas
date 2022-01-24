@@ -9,7 +9,7 @@ const bot = new Telebot(process.env.BOT_TOKEN);
 
 function searchTerms(terms, arrayToAdd) {
   const optionsArray = Object.keys(terms);
-  for (let i = 0; i < opportunityArray.length; i++) {
+  for (let i = 0; i < optionsArray.length; i++) {
     for (let j = 0; j < terms[optionsArray[i]].terms.length; j++) {
       const termRegex = new RegExp(
         terms[optionsArray[i]].terms[j],
