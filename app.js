@@ -56,7 +56,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
             jobOpportunityTerms[opportunityArray[i]].regexOpt
           );
           if (body.search(regexOpportunity) !== -1) {
-            jobOpportunity.push(jobOpportunityTerms[i].hashtag);
+            jobOpportunity.push(jobOpportunityTerms[opportunityArray[i]].hashtag);
             break;
           }
         }
