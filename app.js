@@ -107,8 +107,13 @@ bot.on(["text", "forward", "photo"], (msg) => {
         }
       }
 
-      if (body.search(new RegExp("remoto", "gi")) !== -1) {
-        jobLocal.push("#remoto");
+      const remoteTerms = ["remoto", "remota"];
+      for (let i = 0; i < remoteTerms.length; i++) {
+        const regexRemote = new RegExp(remoteTerms[i], "gi");
+        if (body.search(regexRemote) !== -1) {
+          jobLevel.push("#remoto");
+          break;
+        }
       }
 
       if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
