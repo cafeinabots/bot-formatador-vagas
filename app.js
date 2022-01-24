@@ -45,8 +45,9 @@ bot.on(["text", "forward", "photo"], (msg) => {
       const body = $("body").text();
 
       const opportunityArray = Object.keys(jobOpportunityTerms);
+      console.log("opportunityArray", opportunityArray)
       for (let i = 0; i < opportunityArray.length; i++) {
-        console.log(jobOpportunityTerms[i])
+        console.log("jobOpportunityTerms", jobOpportunityTerms[i])
         for (let j = 0; j < jobOpportunityTerms[i].terms.length; j++) {
           const regexOpportunity = new RegExp(
             jobOpportunityTerms[i].terms[j],
