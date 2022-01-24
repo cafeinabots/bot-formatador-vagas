@@ -116,6 +116,15 @@ bot.on(["text", "forward", "photo"], (msg) => {
         }
       }
 
+      const SPTerms = ["SP", "São Paulo", "Sao Paulo"];
+      for (let i = 0; i < SPTerms.length; i++) {
+        const regexSP = new RegExp(SPTerms[i], "gi");
+        if (body.search(regexSP) !== -1) {
+          jobLocal.push("#SP");
+          break;
+        }
+      }
+
       if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
         limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
       }
