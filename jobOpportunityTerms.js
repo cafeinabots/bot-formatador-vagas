@@ -18,5 +18,25 @@ export const jobOpportunityTerms = {
         hashtag: "#mobile",
         terms: ["mobile", "iOS", "Android"],
         regexOpt: "g"
-    }
+    },
+    suporte: {
+        hashtag: "#suporte",
+        terms: ["suporte", "field"],
+        regexOpt: "gi"
+    },
+    ux_ui: {
+        hashtag: "#ux_ui",
+        terms: ["ux/ui", "ux ui"],
+        regexOpt: "gi"
+    },
+    ux_writer: {
+        hashtag: "#ux_writer",
+        terms: ["ux writer"],
+        regexOpt: "gi"
+    },
+    produtos: {
+        hashtag: "#produtos",
+        terms: ["produtos"],
+        regexOpt: "gi"
+    },
 };
