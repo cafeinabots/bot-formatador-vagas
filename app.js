@@ -44,12 +44,18 @@ bot.on(["text", "forward", "photo"], (msg) => {
       jobTitle = $("title").text();
       const body = $("body").text();
 
-      const opportinityArray = Object.keys(jobOpportunityTerms);
-      for (let i = 0; i < opportinityArray.terms.length; i++) {
-        const regexBackend = new RegExp(opportinityArray.terms[i], opportinityArray.regexOpt);
-        if (body.search(regexBackend) !== -1) {
-          jobOpportunity.push(opportinityArray.hashtag);
-          break;
+      const opportunityArray = Object.keys(jobOpportunityTerms);
+      for (let i = 0; i < opportunityArray.length; i++) {
+        console.log(jobOpportunityTerms[i])
+        for (let j = 0; j < jobOpportunityTerms[i].terms.length; j++) {
+          const regexOpportunity = new RegExp(
+            jobOpportunityTerms[i].terms[j],
+            jobOpportunityTerms[i].regexOpt
+          );
+          if (body.search(regexOpportunity) !== -1) {
+            jobOpportunity.push(jobOpportunityTerms[i].hashtag);
+            break;
+          }
         }
       }
 
