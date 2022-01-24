@@ -80,7 +80,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
         }
       }
 
-      const internTerms = ["estagio", "estágio", "intern"];
+      const internTerms = ["estagio", "estágio", "intern "];
       for (let i = 0; i < internTerms.length; i++) {
         const regexIntern = new RegExp(internTerms[i], "gi");
         if (body.search(regexIntern) !== -1) {
