@@ -45,15 +45,15 @@ bot.on(["text", "forward", "photo"], (msg) => {
       const body = $("body").text();
 
       const opportunityArray = Object.keys(jobOpportunityTerms);
-      console.log("opportunityArray", opportunityArray)
       for (let i = 0; i < opportunityArray.length; i++) {
-        console.log("jobOpportunityTerms", jobOpportunityTerms)
-        console.log("i", i)
-        console.log("jobOpportunityTerms[i]", jobOpportunityTerms[opportunityArray[i]])
-        for (let j = 0; j < jobOpportunityTerms[i].terms.length; j++) {
+        for (
+          let j = 0;
+          j < jobOpportunityTerms[opportunityArray[i]].terms.length;
+          j++
+        ) {
           const regexOpportunity = new RegExp(
-            jobOpportunityTerms[i].terms[j],
-            jobOpportunityTerms[i].regexOpt
+            jobOpportunityTerms[opportunityArray[i]].terms[j],
+            jobOpportunityTerms[opportunityArray[i]].regexOpt
           );
           if (body.search(regexOpportunity) !== -1) {
             jobOpportunity.push(jobOpportunityTerms[i].hashtag);
