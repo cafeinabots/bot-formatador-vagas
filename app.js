@@ -4,6 +4,7 @@ import cheerio from "cheerio";
 import pretty from "pretty";
 import { jobOpportunityTerms } from "./jobOpportunityTerms.js";
 import { jobLevelTerms } from "./jobLevelTerms.js";
+import { jobLocalTerms } from "./jobLocalTerms.js";
 
 const bot = new Telebot(process.env.BOT_TOKEN);
 
@@ -63,6 +64,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
 
       searchTerms(jobOpportunityTerms, jobOpportunity, body);
       searchTerms(jobLevelTerms, jobLevel, body);
+      searchTerms(jobLocalTerms, jobLocal, body);
 
       if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
         limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
