@@ -7,7 +7,7 @@ import { jobLevelTerms } from "./jobLevelTerms.js";
 
 const bot = new Telebot(process.env.BOT_TOKEN);
 
-function searchTerms(terms, arrayToAdd) {
+function searchTerms(terms, arrayToAdd, body) {
   const optionsArray = Object.keys(terms);
   for (let i = 0; i < optionsArray.length; i++) {
     for (let j = 0; j < terms[optionsArray[i]].terms.length; j++) {
@@ -61,8 +61,8 @@ bot.on(["text", "forward", "photo"], (msg) => {
       jobTitle = $("title").text();
       const body = $("body").text();
 
-      searchTerms(jobOpportunityTerms, jobOpportunity);
-      searchTerms(jobLevelTerms, jobLevel);
+      searchTerms(jobOpportunityTerms, jobOpportunity, body);
+      searchTerms(jobLevelTerms, jobLevel, body);
 
       if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
         limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
