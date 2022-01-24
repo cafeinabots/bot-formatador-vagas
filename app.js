@@ -70,7 +70,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
         }
       }
 
-      const mobileTerms = ["mobile", "ios", "android"];
+      const mobileTerms = ["mobile", " iOS", "Android"];
       for (let i = 0; i < mobileTerms.length; i++) {
         const regexMobile = new RegExp(mobileTerms[i], "gi");
         if (body.search(regexMobile) !== -1) {

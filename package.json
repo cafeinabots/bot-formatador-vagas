@@ -6,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node -r dotenv/config app.js",
-    "logs": "heroku logs --app=cafeina-vagas-bot",
+    "logs": "heroku logs --app=formatador-vagas",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
