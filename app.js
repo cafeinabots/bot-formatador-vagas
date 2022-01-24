@@ -2,7 +2,7 @@ import Telebot from "telebot";
 import axios from "axios";
 import cheerio from "cheerio";
 import pretty from "pretty";
-import { jobOpportunityTerms } from "./jobOpportunityTerms";
+import { jobOpportunityTerms } from "./jobOpportunityTerms.js";
 
 const bot = new Telebot(process.env.BOT_TOKEN);
 
