@@ -20,7 +20,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
   let url = "";
   let jobOpportunity = [];
   let jobLevel = [];
-  let jobLocal = "";
+  let jobLocal = [];
   let jobTitle = "";
   let limitDate = "";
 
@@ -75,7 +75,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
         const regexMobile = new RegExp(mobileTerms[i], "gi");
         if (body.search(regexMobile) !== -1) {
           jobOpportunity.push("#mobile");
-          console.log(pretty(body))
+          console.log(pretty(body));
           break;
         }
       }
@@ -107,14 +107,20 @@ bot.on(["text", "forward", "photo"], (msg) => {
         }
       }
 
+      if (body.search(new RegExp("remoto", "gi")) !== -1) {
+        jobLocal.push("#remoto");
+      }
+
       if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
         limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
       }
 
       const newJobMessage = `💻 ${jobOpportunity.join(" ")}
 🧑🏽 ${jobLevel.join(" ")}
-🌎 ${jobLocal}
-${limitDate ? "📅 " + limitDate + "\n" : ""}${jobTitle ? "\n" + jobTitle + "\n" : ""}
+🌎 ${jobLocal.join(" ")}
+${limitDate ? "📅 " + limitDate + "\n" : ""}${
+        jobTitle ? "\n" + jobTitle + "\n" : ""
+      }
 🔗 ${url}`;
 
       bot.sendMessage(fromId, newJobMessage);
