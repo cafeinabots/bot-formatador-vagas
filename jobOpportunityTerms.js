@@ -39,4 +39,9 @@ export const jobOpportunityTerms = {
         terms: ["produtos"],
         regexOpt: "gi"
     },
+   dev: {
+        hashtag: "#dev",
+        terms: ["programação"],
+        regexOpt: "gi"
+    },
 };
