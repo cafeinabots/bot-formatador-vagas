@@ -11,7 +11,7 @@ export const jobLevelTerms = {
     },
     estagio: {
         hashtag: "#estagio",
-        terms: ["remoto", "remota", "remotar"],
+        terms: ["estagio", "estágio", "estagiário", "estagiária"],
         regexOpt: "gi"
     },
 };
