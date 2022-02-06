@@ -45,11 +45,24 @@ bot.on(["text", "forward", "photo"], (msg) => {
 
   const isUrl = text.search(URL_REGEX);
 
-  if (isUrl === -1) {
-    return bot.sendMessage(
-      fromId,
-      "Por favor, envie um link de uma vaga para formatar."
-    );
+  if (isUrl === -1) {l
+      searchTerms(jobOpportunityTerms, jobOpportunity, text);
+      searchTerms(jobLevelTerms, jobLevel, text);
+      searchTerms(jobLocalTerms, jobLocal, text);
+
+      if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
+        limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
+      }
+
+      const newJobMessage = `💻 ${jobOpportunity.join(" ")}
+🧑🏽 ${jobLevel.join(" ")}
+🌎 ${jobLocal.join(" ")}
+${limitDate ? "📅 " + limitDate + "\n" : ""}${
+        jobTitle ? "\n" + jobTitle + "\n" : ""
+      }
+🔗 ${url}`;
+
+      bot.sendMessage(fromId, newJobMessage);
   }
 
   url = text.match(/\bhttps?:\/\/\S+/gi);
