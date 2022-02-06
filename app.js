@@ -2,27 +2,13 @@ import Telebot from "telebot";
 import axios from "axios";
 import cheerio from "cheerio";
 import pretty from "pretty";
+
 import { jobOpportunityTerms } from "./jobOpportunityTerms.js";
 import { jobLevelTerms } from "./jobLevelTerms.js";
 import { jobLocalTerms } from "./jobLocalTerms.js";
+import { searchTerms } from "./searchTerms.js"
 
 const bot = new Telebot(process.env.BOT_TOKEN);
-
-function searchTerms(terms, arrayToAdd, body) {
-  const optionsArray = Object.keys(terms);
-  for (let i = 0; i < optionsArray.length; i++) {
-    for (let j = 0; j < terms[optionsArray[i]].terms.length; j++) {
-      const termRegex = new RegExp(
-        terms[optionsArray[i]].terms[j],
-        terms[optionsArray[i]].regexOpt
-      );
-      if (body.search(termRegex) !== -1) {
-        arrayToAdd.push(terms[optionsArray[i]].hashtag);
-        break;
-      }
-    }
-  }
-}
 
 const CHAT_ID = -1001608160303;
 const URL_REGEX =
