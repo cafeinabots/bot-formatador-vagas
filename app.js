@@ -96,7 +96,7 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       console.error(err);
       return bot.sendMessage(
         fromId,
-        "Opa, não consegui ler essa vaga. :( Tenta me enviar o conteúdo da vaga (copia e cola aqui) SEM O LINK."
+        "Opa, não consegui ler essa vaga. 😥\n Tenta me enviar o conteúdo da vaga (copia e cola aqui) SEM O LINK."
       );
     }
   }
