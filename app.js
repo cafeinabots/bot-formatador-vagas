@@ -62,7 +62,7 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       }
 🔗 `;
 
-      bot.sendMessage(fromId, newJobMessage);
+      return bot.sendMessage(fromId, newJobMessage);
   }
 
   url = text.match(/\bhttps?:\/\/\S+/gi);
@@ -91,10 +91,10 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       }
 🔗 ${url}`;
 
-      bot.sendMessage(fromId, newJobMessage);
+      return bot.sendMessage(fromId, newJobMessage);
     } catch (err) {
       console.error(err);
-      bot.sendMessage(fromId, 'Opa, não consegui ler essa vaga. :( Tenta me enviar o conteúdo da vaga (copia e cola aqui) SEM O LINK.);
+      return bot.sendMessage(fromId, 'Opa, não consegui ler essa vaga. :( Tenta me enviar o conteúdo da vaga (copia e cola aqui) SEM O LINK.);
     }
   }
 
