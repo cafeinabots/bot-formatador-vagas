@@ -45,7 +45,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
 
   const isUrl = text.search(URL_REGEX);
 
-  if (isUrl === -1) {l
+  if (isUrl === -1) {
       searchTerms(jobOpportunityTerms, jobOpportunity, text);
       searchTerms(jobLevelTerms, jobLevel, text);
       searchTerms(jobLocalTerms, jobLocal, text);
