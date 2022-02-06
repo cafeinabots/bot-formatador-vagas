@@ -41,7 +41,7 @@ export const jobOpportunityTerms = {
     },
    dev: {
         hashtag: "#dev",
-        terms: ["programação"],
+        terms: ["programação", "estágio em desenvolvimento"],
         regexOpt: "gi"
     },
 };
