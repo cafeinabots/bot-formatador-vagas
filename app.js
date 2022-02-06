@@ -46,23 +46,23 @@ bot.on(["text", "forward", "photo"], (msg) => {
   const isUrl = text.search(URL_REGEX);
 
   if (isUrl === -1) {
-      searchTerms(jobOpportunityTerms, jobOpportunity, text);
-      searchTerms(jobLevelTerms, jobLevel, text);
-      searchTerms(jobLocalTerms, jobLocal, text);
+    searchTerms(jobOpportunityTerms, jobOpportunity, text);
+    searchTerms(jobLevelTerms, jobLevel, text);
+    searchTerms(jobLocalTerms, jobLocal, text);
 
-      if (text.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
-        limitDate = text.match(/inscrições até (\d+\/\d+)/gi);
-      }
+    if (text.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
+      limitDate = text.match(/inscrições até (\d+\/\d+)/gi);
+    }
 
-      const newJobMessage = `💻 ${jobOpportunity.join(" ")}
+    const newJobMessage = `💻 ${jobOpportunity.join(" ")}
 🧑🏽 ${jobLevel.join(" ")}
 🌎 ${jobLocal.join(" ")}
 ${limitDate ? "📅 " + limitDate + "\n" : ""}${
-        jobTitle ? "\n" + jobTitle + "\n" : ""
-      }
+      jobTitle ? "\n" + jobTitle + "\n" : ""
+    }
 🔗 `;
 
-      return bot.sendMessage(fromId, newJobMessage);
+    return bot.sendMessage(fromId, newJobMessage);
   }
 
   url = text.match(/\bhttps?:\/\/\S+/gi);
@@ -94,7 +94,10 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       return bot.sendMessage(fromId, newJobMessage);
     } catch (err) {
       console.error(err);
-      return bot.sendMessage(fromId, 'Opa, não consegui ler essa vaga. :( Tenta me enviar o conteúdo da vaga (copia e cola aqui) SEM O LINK.);
+      return bot.sendMessage(
+        fromId,
+        "Opa, não consegui ler essa vaga. :( Tenta me enviar o conteúdo da vaga (copia e cola aqui) SEM O LINK."
+      );
     }
   }
 
