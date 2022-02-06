@@ -50,8 +50,8 @@ bot.on(["text", "forward", "photo"], (msg) => {
       searchTerms(jobLevelTerms, jobLevel, text);
       searchTerms(jobLocalTerms, jobLocal, text);
 
-      if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
-        limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
+      if (text.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
+        limitDate = text.match(/inscrições até (\d+\/\d+)/gi);
       }
 
       const newJobMessage = `💻 ${jobOpportunity.join(" ")}
@@ -60,7 +60,7 @@ bot.on(["text", "forward", "photo"], (msg) => {
 ${limitDate ? "📅 " + limitDate + "\n" : ""}${
         jobTitle ? "\n" + jobTitle + "\n" : ""
       }
-🔗 ${url}`;
+🔗 `;
 
       bot.sendMessage(fromId, newJobMessage);
   }
@@ -94,6 +94,7 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       bot.sendMessage(fromId, newJobMessage);
     } catch (err) {
       console.error(err);
+      bot.sendMessage(fromId, 'Opa, não consegui ler essa vaga. :( Tenta me enviar o conteúdo da vaga (copia e cola aqui) SEM O LINK.);
     }
   }
 
