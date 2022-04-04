@@ -68,6 +68,10 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       if (body.search(/inscrições até (\d+\/\d+)/gi) !== -1) {
         limitDate = body.match(/inscrições até (\d+\/\d+)/gi);
       }
+      
+      if (body.search(/inscrições até o dia (\d+\/\d+)/gi) !== -1) {
+        limitDate = body.match(/inscrições até o dia (\d+\/\d+)/gi);
+      }
 
       const newJobMessage = `💻 ${jobOpportunity.join(" ")}
 🧑🏽 ${jobLevel.join(" ")}
