@@ -12,11 +12,11 @@ export const jobLocalTerms = {
     RJ: {
         hashtag: "#RJ",
         terms: ["RJ", "Rio de Janeiro"],
-        regexOpt: "g"
+        regexOpt: "gi"
     },
     AC: {
         hashtag: "#AC",
-        terms: ["Acre", "Rio Branco"],
+        terms: ["/^Acre$/", "Rio Branco"],
         regexOpt: "gi"
     },
     AL: {
@@ -47,7 +47,7 @@ export const jobLocalTerms = {
     ES: {
         hashtag: "#ES",
         terms: ["Espírito Santo", "Espirito Santo", "Vitória"],
-        regexOpt: "g"
+        regexOpt: "gi"
     },
     GO: {
         hashtag: "#GO",
