@@ -46,7 +46,7 @@ export const jobOpportunityTerms = {
     },
     games: {
         hashtag: "#games",
-        terms: ["games", "jogos"],
+        terms: ["/^games$/", "/^game$/", "/^jogos$/"],
         regexOpt: "gi"
     },
 };
