@@ -10,7 +10,6 @@ import { searchTerms } from "./searchTerms.js"
 
 const bot = new Telebot(process.env.BOT_TOKEN);
 
-const CHAT_ID = -1001608160303;
 const URL_REGEX =
   /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
 
@@ -46,9 +45,11 @@ bot.on(["text", "forward", "photo"], (msg) => {
 ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       jobTitle ? "\n" + jobTitle + "\n" : ""
     }
-🔗 `;
+🔗 
 
-    return bot.sendMessage(fromId, newJobMessage);
+☕️ <i>Acompanhe vagas e conteúdos para iniciantes em TI no Telegram da @CafeinaVagas</i>`;
+
+    return bot.sendMessage(fromId, newJobMessage, { parseMode: "HTML" });
   }
 
   url = text.match(/\bhttps?:\/\/\S+/gi);
@@ -79,9 +80,11 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
 ${limitDate ? "📅 " + limitDate + "\n" : ""}${
         jobTitle ? "\n" + jobTitle + "\n" : ""
       }
-🔗 ${url}`;
+🔗 ${url}
 
-      return bot.sendMessage(fromId, newJobMessage);
+☕️ <i>Acompanhe vagas e conteúdos para iniciantes em TI no Telegram da @CafeinaVagas</i>`;
+
+      return bot.sendMessage(fromId, newJobMessage, { parseMode: "HTML" });
     } catch (err) {
       console.error(err);
       return bot.sendMessage(
