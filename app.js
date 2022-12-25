@@ -15,6 +15,9 @@ const URL_REGEX =
 
 // On every text message
 bot.on(["text", "forward", "photo"], (msg) => {
+  if(msg.text[0] === "/") {
+    return;
+  }
   // Message infos
   const text = msg.text;
   const fromId = msg.from.id;
