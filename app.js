@@ -65,6 +65,12 @@ ${limitDate ? "📅 " + limitDate + "\n" : ""}${
       jobTitle = $("title").text();
       const body = $("body").text();
 
+      const vagaGupyEncerrada = (str) => {
+        return str.match(/Fazer login como candidato/gi)
+      }
+      if(vagaGupyEncerrada(body)) {
+        return bot.sendMessage(fromId, "Esta Vaga da Gupy se encontra encerrada, se possível verifique o link acessando a página :D");
+      }
       searchTerms(jobOpportunityTerms, jobOpportunity, body);
       searchTerms(jobLevelTerms, jobLevel, body);
       searchTerms(jobLocalTerms, jobLocal, body);
