@@ -1,29 +1,35 @@
 {
-  "name": "bot-formatador-vaga",
-  "type": "module",
-  "version": "1.0.0",
+  "name": "bot-formatador-vagas",
+  "version": "2.0.0",
   "description": "Bot que formata e envia as vagas para os ADMs do grupo Cafeína Vagas postarem.",
-  "main": "app.js",
+  "main": "api/index.ts",
   "scripts": {
-    "start": "node -r dotenv/config app.js",
-    "logs": "heroku logs --app=formatador-vagas --tail",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "nodemon src/main.ts",
+    "format": "prettier --write 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BiancaPereira/bot-formatador-vagas.git"
+    "url": "git+https://github.com/cafeinabots/bot-formatador-vagas.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BiancaPereira/bot-formatador-vagas/issues"
+    "url": "https://github.com/cafeinabots/bot-formatador-vagas/issues"
   },
-  "homepage": "https://github.com/BiancaPereira/bot-formatador-vagas#readme",
+  "homepage": "https://github.com/cafeinabots/bot-formatador-vagas#readme",
   "dependencies": {
-    "axios": "^0.25.0",
-    "cheerio": "^1.0.0-rc.10",
-    "dotenv": "^14.2.0",
-    "pretty": "^2.0.0",
-    "telebot": "^1.4.1"
+    "axios": "^1.3.4",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.0.3",
+    "grammy": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.5",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   }
 }
