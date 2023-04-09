@@ -5,6 +5,7 @@
   "main": "api/index.ts",
   "scripts": {
     "build": "tsc",
+    "postbuild": "bash postbuild-set-webhook.sh",
     "dev": "nodemon src/main.ts",
     "format": "prettier --write 'src/**/*.ts'"
   },
