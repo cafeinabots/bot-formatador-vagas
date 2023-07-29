@@ -1,5 +1,5 @@
 import { vagaEncerrada } from '../responses/messages';
-import { PutHashtagsResponse } from '../types/shared-interfaces';
+import { PutHashtagsResponse, RetrieveContentResponse } from '../types/shared-interfaces';
 
 export const searchTerms = (terms: Object, body: string): string[] => {
   const optionsArray = Object.keys(terms);
@@ -39,4 +39,28 @@ export const formatJob = (putHashtagsResponse: PutHashtagsResponse): string => {
     ? [vagaEncerrada]
     : [jobOpportunity, jobLevel, jobLocal, jobTitle, jobUrl, limitDate, footer];
   return job.join('\n');
+};
+
+export const resultsEqual = (
+  results: RetrieveContentResponse[],
+): RetrieveContentResponse | undefined => {
+  const firstResult = results[0];
+  results.shift();
+  for (const e of results) {
+    if (e.jobTitle === firstResult.jobTitle || e.body === firstResult.body) {
+      return e;
+    }
+  }
+};
+
+export const removeQueryString = (url: string, keepfirstQueryParam: boolean = false) => {
+  const parsedUrl = new URL(url);
+  const queryPairs = parsedUrl.search.split('&');
+
+  parsedUrl.search = keepfirstQueryParam ? queryPairs[0] : '';
+  return parsedUrl.toString();
+};
+
+export const isRetrieveContentResponse = (obj: any): obj is RetrieveContentResponse => {
+  return Boolean(obj?.jobTitle && obj?.body);
 };
