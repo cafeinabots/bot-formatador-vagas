@@ -6,7 +6,7 @@ export const retrieveContent = async (url: string): Promise<RetrieveContentRespo
   url = url.startsWith('https://') ? url : 'https://' + url;
   const response = await axios.get(url);
   const $ = cheerio.load(response.data);
-  const jobTitle = $('title').text();
-  const body = $('body').text();
+  const jobTitle = $('title').html() || '';
+  const body = $('body').html() || '';
   return { jobTitle, body };
 };
